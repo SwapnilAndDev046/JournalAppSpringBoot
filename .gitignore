@@ -1,0 +1,59 @@
+# ===============================
+# Build files
+# ===============================
+target/
+build/
+
+# Maven wrapper (optional: keep or ignore)
+.mvn/wrapper/maven-wrapper.jar
+
+# ===============================
+# Logs
+# ===============================
+*.log
+
+# ===============================
+# OS files
+# ===============================
+.DS_Store
+Thumbs.db
+
+# ===============================
+# IDEs
+# ===============================
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Eclipse / STS
+.project
+.classpath
+.settings/
+.springBeans
+.sts4-cache
+
+# VS Code
+.vscode/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# ===============================
+# Application secrets
+# ===============================
+application.properties
+application.yml
+.env
+
+# (Optional: keep example config)
+!application-example.properties
+
+# ===============================
+# Misc
+# ===============================
+HELP.md
