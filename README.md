@@ -44,15 +44,35 @@ Client → Controller → Service → Repository → Database
 
 ---
 
-src/main/java/com/swapnil/journalapp
+## 📂 Project Structure
+
+
+src/
+└── main/
+└── java/
+└── com/
+└── swapnil/
+└── journalapp/
+├── controller/
+│ └── JournalController.java
 │
-├── Controller # REST Controllers
-├── Service # Business Logic
-│ └── Impl # Service Implementations
-├── Repository # JPA Repositories
-├── Entity # Database Entities
-├── Dto # Data Transfer Objects
-├── Config # Configuration (ModelMapper)
+├── service/
+│ ├── JournalService.java
+│ └── impl/
+│ └── JournalServiceImpl.java
+│
+├── repository/
+│ └── JournalRepo.java
+│
+├── entity/
+│ └── Journal.java
+│
+├── dto/
+│ └── JournalDto.java
+│
+├── config/
+│ └── ModelMapperConfig.java
+│
 └── JournalApplication.java
 
 
