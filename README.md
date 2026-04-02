@@ -45,8 +45,7 @@ Client → Controller → Service → Repository → Database
 ---
 
 ## 📂 Project Structure
-
-
+```
 src/
 └── main/
 └── java/
@@ -74,8 +73,7 @@ src/
 │ └── ModelMapperConfig.java
 │
 └── JournalApplication.java
-
-
+```
 ---
 
 ## 🔗 API Endpoints (Sample)
