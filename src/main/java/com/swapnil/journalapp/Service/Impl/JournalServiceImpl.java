@@ -15,7 +15,7 @@ import java.util.List;
 public class JournalServiceImpl implements JournalService {
 
     private final JournalRepo journalRepo; // data access via database
-    private final ModelMapper modelMapper; //
+    private final ModelMapper modelMapper; // security - dto to entity or entity to dto
 
     @Override
     public List<JournalDto> getAllEntries() {
