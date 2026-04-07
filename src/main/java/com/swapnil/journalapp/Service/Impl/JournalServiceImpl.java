@@ -1,6 +1,7 @@
 package com.swapnil.journalapp.Service.Impl;
 
 import com.swapnil.journalapp.Dto.JournalDto;
+import com.swapnil.journalapp.Dto.safeEntryDto;
 import com.swapnil.journalapp.Repository.JournalRepo;
 import com.swapnil.journalapp.Service.JournalService;
 import com.swapnil.journalapp.entity.Journal;
@@ -9,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -37,7 +39,7 @@ public class JournalServiceImpl implements JournalService {
     }
 
     @Override
-    public JournalDto addJournalEntry(JournalDto journalDtoEntry) {
+    public JournalDto addJournalEntry(safeEntryDto journalDtoEntry) {
         Journal journalEntry = modelMapper.map(journalDtoEntry, Journal.class);//Convert dto entry to entity entry
 
         Journal saveEntry = journalRepo.save(journalEntry);// add the converted entry in repo
@@ -46,7 +48,7 @@ public class JournalServiceImpl implements JournalService {
     }
 
     @Override
-    public JournalDto editEntry(Long id, JournalDto journalDtoEntry) {
+    public JournalDto editEntry(Long id, safeEntryDto journalDtoEntry) {
         Journal journalEntry = modelMapper.map(journalDtoEntry,Journal.class);// dto -> entity
 
         //find by id first then update
@@ -71,6 +73,29 @@ public class JournalServiceImpl implements JournalService {
         journalRepo.deleteById(journalId.getId());//Deletes the entry via repo from database
 
         return "Deleted the ID = "+id+" Successfully.";
+    }
+
+
+    // (We use map since we are getting random any one input in JSON) or maybe in rare only 2 outOff many
+    @Override
+    public JournalDto partialUpdate(Long id, Map<String,Object> values) {
+        Journal journalId = journalRepo
+                .findById(id)
+                .orElseThrow(()->new IllegalArgumentException("Not Found Id"));
+        values.forEach((key,value)->{
+            switch(key){
+                case "title":
+                    journalId.setTitle((String) value);
+                    break;
+                case "content":
+                    journalId.setContent((String) value);
+                    break;
+                default:
+                    System.out.println("Error");
+            }
+        });
+        Journal saveEntry = journalRepo.save(journalId);
+        return modelMapper.map(saveEntry,JournalDto.class);
     }
 
 

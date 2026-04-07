@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class JournalDto {
 
-
     private long id;
     private String title;
     private String content;

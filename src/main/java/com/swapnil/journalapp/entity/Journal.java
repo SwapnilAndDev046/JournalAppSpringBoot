@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class Journal {
     //POJO class
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // auto generation
     private long id;
 
     private String title;

@@ -1,6 +1,7 @@
 package com.swapnil.journalapp.Controller;
 
 import com.swapnil.journalapp.Dto.JournalDto;
+import com.swapnil.journalapp.Dto.safeEntryDto;
 import com.swapnil.journalapp.Repository.JournalRepo;
 import com.swapnil.journalapp.Service.JournalService;
 import com.swapnil.journalapp.entity.Journal;
@@ -34,14 +35,14 @@ public class JournalController {
     // ===================== POST API =====================
 
     @PostMapping
-    public JournalDto createEntry(@RequestBody JournalDto myEntry){
+    public JournalDto createEntry(@RequestBody safeEntryDto myEntry){
         return journalService.addJournalEntry(myEntry);
     }
 
     // ===================== PUT API =====================
 
     @PutMapping("/{id}")
-    public JournalDto updateEntry(@PathVariable Long id, @RequestBody JournalDto journalDtoEntry){
+    public JournalDto updateEntry(@PathVariable Long id, @RequestBody safeEntryDto journalDtoEntry){
         return journalService.editEntry(id,journalDtoEntry);//need an object to call
     }
 
@@ -52,5 +53,11 @@ public class JournalController {
         return journalService.deleteEntry(id);
     }
 
+
+    // ===================== PATCH API =====================
+    @PatchMapping("/{id}")
+    public JournalDto partialUpdate(@PathVariable Long id, @RequestBody Map<String,Object> values){
+        return journalService.partialUpdate(id,values);
+    }
 }
 
