@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class safeEntryDto {
+    //safer we can use it for POST
     private String title;
     private String content;
 }
