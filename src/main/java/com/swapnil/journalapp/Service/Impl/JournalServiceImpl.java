@@ -16,6 +16,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class JournalServiceImpl implements JournalService {
 
+    //instantiating the repo interface
     private final JournalRepo journalRepo; // data access via database
     private final ModelMapper modelMapper; // security - dto to entity or entity to dto
 
