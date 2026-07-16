@@ -19,7 +19,7 @@ public class JournalController {
     private final JournalRepo journalRepo;
     private final JournalService journalService;
 
-    // ===================== GET APIs =====================
+
 
     @GetMapping
     public List<JournalDto> getAll() {
@@ -32,21 +32,21 @@ public class JournalController {
     }
 
 
-    // ===================== POST API =====================
+
 
     @PostMapping
     public JournalDto createEntry(@RequestBody safeEntryDto myEntry){
         return journalService.addJournalEntry(myEntry);
     }
 
-    // ===================== PUT API =====================
+
 
     @PutMapping("/{id}")
     public JournalDto updateEntry(@PathVariable Long id, @RequestBody safeEntryDto journalDtoEntry){
         return journalService.editEntry(id,journalDtoEntry);//need an object to call
     }
 
-    // ===================== DELETE API =====================
+
 
     @DeleteMapping("/{id}")
     public String DeleteEntry(@PathVariable Long id){
@@ -54,7 +54,7 @@ public class JournalController {
     }
 
 
-    // ===================== PATCH API =====================
+
     @PatchMapping("/{id}")
     public JournalDto partialUpdate(@PathVariable Long id, @RequestBody Map<String,Object> values){
         return journalService.partialUpdate(id,values);

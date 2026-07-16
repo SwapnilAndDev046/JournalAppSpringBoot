@@ -32,6 +32,7 @@ public class JournalServiceImpl implements JournalService {
 
     @Override
     public JournalDto getById(Long id) {
+        //Journal because of JPaRepository<Journal, Long>
         Journal journal = journalRepo
                 .findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Journal entry Not Found Entry id " + id));
